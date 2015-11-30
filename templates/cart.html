@@ -4,33 +4,33 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="style.css" rel="stylesheet" media="screen">
-		<link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
-		<link href='http://weloveiconfonts.com/api/?family=entypo' rel='stylesheet'>
-		<link rel='shortcut icon' href="favicon.ico">
-		<title>Корзина</title>
+		<link href='https://fonts.googleapis.com/css?family=PT+Serif&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<title>Корзина Корзина</title>
 	</head>
 	<body>
 		<div class="container-fluid">
 			<div class="row">
 				<div class = "col-md-12">
 				<h1 class="text-center">Корзина</h1>
-				<form>
+				<form action = "{{url_for('newOrder')}}" method = 'post'>
 				  <div class="form-group">
 				    <label for="name">Фамилия Имя Отчество</label>
-				    <input type="text" class="form-control" id="name" placeholder="Иванова Мария Александровна">
+				    <input type="text" class="form-control" id="name" name = 'name' placeholder="Иванова Мария Александровна">
 				  </div>		
 				  <div class="form-group">
 				    <label for="email">Электронная почта</label>
-				    <input type="email" class="form-control" id="email" placeholder="example@email.ru">
+				    <input type="email" class="form-control" id="email" name = 'email' placeholder="example@email.ru">
 				  </div>
 				  <div class="form-group">
 				    <label for="address">Адрес</label>
-				    <input type="text" class="form-control" id="address" placeholder="Россия, Новгородская область, поселок Калина, ул. Дубки, дом 3, кв. 236, индекс 345678">
+				    <input type="text" class="form-control" id="address" name = 'address' placeholder="Россия, Новгородская область, поселок Калина, ул. Дубки, дом 3, кв. 236, индекс 345678">
 				  </div>
 				  <div class="form-group">
 				  	  <label for="count">Количество тестов</label>
-					  <select class="form-control">
+					  <select class="form-control" id='select_count' name='count'>
 	  					<option>10</option>
 	  					<option>15</option>
 	  					<option>20</option>
@@ -44,14 +44,23 @@
 				  </div>
 				  <div class="form-group">
 				    <label>Сумма к оплате</label>
+				     <p id="total_cost"></p>
 				  </div>
 				  <div class="form-group">
-				  	<label>Оплатить</label>
-                  </div>
+				  	<label>Внимание</label>
+				  		<p>Заказ будет </p>
+	                  </div>
 				  <button type="submit" class="btn btn-success btn btn-primary btn-lg center-block">Оформить заказ</button>
 				</form>
 			</div>
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		$("#select_count").change(function(event) {
+			$("#total_cost").text(
+				Number($("#select_count option:selected").text()) * {{ price }} + " руб"
+			);
+		});
+	</script>
 </html>

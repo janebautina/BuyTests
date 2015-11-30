@@ -10,7 +10,7 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
-price = 89
+price = 86
 @app.route('/')
 def welcomePage():
   return render_template('index.html')
@@ -20,12 +20,14 @@ def welcomePage():
 def newOrder():
 	if request.method == 'POST':
 	    newOrder = Orders(count =request.form['count'], name = request.form['name'], address = request.form['address'], email = request.form['email'])
-	    sum = price * newOrder.count
 	    session.add(newOrder)
 	    session.commit()
 	    return redirect(url_for('welcomePage'))
 	else:
-	    return render_template('cart.html', sum)
+	    return render_template('cart.html', price = price)
+
+def summa(order_count):
+	return price * order_count
 
 if __name__ =='__main__':
   app.secret_key = 'super_secret_key'
