@@ -26,9 +26,6 @@ def newOrder():
 	else:
 	    return render_template('cart.html', price = price)
 
-def summa(order_count):
-	return price * order_count
-
 if __name__ =='__main__':
   app.secret_key = 'super_secret_key'
   app.debug = True # reload if see any code changes
