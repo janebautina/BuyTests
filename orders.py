@@ -16,11 +16,14 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
+
 app = Flask(__name__)
+
 price = 86
+
 @app.route('/')
 def welcomePage():
-  return render_template('index.html')
+  return render_template('about.html', price = price)
 
 @app.route('/cart', methods=['GET', 'POST'])
 @app.route('/cart/', methods=['GET', 'POST']) 
@@ -58,3 +61,4 @@ if __name__ =='__main__':
   app.secret_key = 'super_secret_key'
   app.debug = True # reload if see any code changes
   app.run(host = '0.0.0.0', port = 8080)
+  #PUBLISHABLE_KEY=pk_test_SiqumiWt0WZrXxbSBRktXFAw SECRET_KEY=sk_test_Wo45KaukCMrEleLCoIFNh20H python orders.py
