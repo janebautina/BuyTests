@@ -1,7 +1,7 @@
 # About BuyTests
   This is an e-commerce website built using Stripe API for web payments
   This application is for infertility clinic in Russia. Content written 
-  in Russian. 
+  in Russian. E-commerce code will be used for [SaveMoney application](https://github.com/janebautina/SaveMoney).
 
 # Getting Started
 
@@ -26,7 +26,7 @@
 # Important Notes
 
 BuyTest is under construction, so to run it you need to provide your own
-stripe PUBLISHABLE_KEY and SECRET_KEY
+Stripe PUBLISHABLE_KEY and SECRET_KEY
 
 
 
