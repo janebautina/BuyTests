@@ -13,7 +13,7 @@
 6. Type the commant to log into VM: vagrant ssh
 7. Run application within the VM:
  - python database_setup.py
- - python orders.py
+ - PUBLISHABLE_KEY=your_key SECRET_KEY=your_secret_key python orders.py 
 8. Access and test your application by visiting http://localhost:8080 locally
 
 # Requirements
@@ -22,3 +22,13 @@
  - Flask 0.9
  - Flask-Login 0.1.3
  - SQLAlchemy 0.8.4
+
+# Important Notes
+
+BuyTest is under construction, so to run it you need to provide your own
+stripe PUBLISHABLE_KEY and SECRET_KEY
+
+
+
+
+
