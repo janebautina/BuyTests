@@ -26,7 +26,7 @@
 # Important Notes
 
 BuyTest is under construction, so to run it you need to provide your own
-Stripe PUBLISHABLE_KEY and SECRET_KEY
+Stripe PUBLISHABLE_KEY and SECRET_KEY. This application comes with no warranties of any kind.
 
 
 
